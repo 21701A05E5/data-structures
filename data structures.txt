@@ -1,0 +1,2102 @@
+
+//tree
+#include <iostream>
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        std::cout << root->data << " -> ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        std::cout << root->data << " -> ";
+        in_order(root->right);
+        return;
+    }
+    
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        std::cout << root->data << " -> ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+};
+
+int main()
+{
+    Node *root = new Node(11);
+    
+    root->left = new Node(20);
+    root->right = new Node(8);
+    
+    root->left->left = new Node(2);
+    root->left->right = new Node(7);
+    
+    root->right->left = new Node(6);
+    root->right->right = new Node(15);
+    
+    Tree myObj;
+    std::cout << "pre_order: " << std::endl;
+    myObj.pre_order(root);
+    
+    std::cout << "in_order: " << std::endl;
+    myObj.in_order(root);
+    
+    std::cout << "post_order: " << std::endl;
+    myObj.post_order(root);
+
+    return 0;
+}
+
+
+
+
+//Inserting BST
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    void post(){
+        post_order(root);
+    }
+    void pre(){
+        pre_order(root);
+    }
+    void in(){
+        in_order(root);
+    }
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " -> ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " -> ";
+        in_order(root->right);
+        return;
+    }
+    
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " -> ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+};
+
+int main()
+{
+    /*Node *root = new Node(11);
+    
+    root->left = new Node(20);
+    root->right = new Node(8);
+    
+    root->left->left = new Node(2);
+    root->left->right = new Node(7);
+    
+    root->right->left = new Node(6);
+    root->right->right = new Node(15);
+    
+    Tree myObj;
+    cout <<endl<< "pre_order: " <<endl;
+    myObj.pre_order(root);
+    
+    cout <<endl<< "in_order: " <<endl;
+    myObj.in_order(root);
+    
+    cout <<endl<< "post_order: " <<endl;
+    myObj.post_order(root);*/
+    Tree BST;
+    BST.insert(15);
+    BST.insert(3);
+    BST.insert(21);
+    BST.insert(18);
+    BST.insert(25);
+    BST.insert(17);
+    BST.insert(19);
+    BST.post();
+    return 0;
+}
+
+
+
+
+//complete
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    
+    void post(){
+        post_order(root);
+    }
+    
+    void pre(){
+        pre_order(root);
+    }
+    
+    void in(){
+        in_order(root);
+    }
+    
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " ";
+        in_order(root->right);
+        return;
+    }
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+    
+    void com(){
+        queue<Node *> q;
+        isComplete(root,q);
+    }
+    
+    void isComplete(Node *root,queue<Node *> q){
+        if(!root){
+            cout<<"Yes"<<endl;
+            return;
+        }
+        q.push(root);
+        while(!(q.empty())){
+            int qsize=q.size();
+            for(int i=0;i<qsize;i++){
+                Node *nd=q.front();
+                if(nd==NULL){
+                    while(!q.empty()){
+                        if(q.front() == NULL)
+                           q.pop();
+                        else{
+                            cout<<"No"<<endl;
+                            return;
+                        }
+                    }
+                    cout<<"Yes"<<endl;
+                    return;
+                }
+                else{
+                    q.push(nd->left);
+                    q.push(nd->right);
+                    q.pop();
+                }
+            }
+        }
+            
+    }
+};
+
+int main()
+{
+    int t,n,a,i;
+    cin>>t;
+    while(t--){
+        Tree BST;
+        cin>>n;
+        for(i=0;i<n;i++){
+            cin>>a;
+            BST.insert(a);
+        }
+        BST.com();
+    }
+    return 0;
+}
+//Full binary tree
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    
+    void post(){
+        post_order(root);
+    }
+    
+    void pre(){
+        pre_order(root);
+    }
+    
+    void in(){
+        in_order(root);
+    }
+    
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " ";
+        in_order(root->right);
+        return;
+    }
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+    
+    void LO(){
+        queue<Node *> q;
+        Level_order(root,q);
+    }
+    
+    void Level_order(Node *root,queue<Node *> q){
+        q.push(root);
+        while(!(q.empty())){
+            int qsize=q.size();
+            for(int i=0;i<qsize;i++){
+                Node *nd=q.front();
+                cout<<nd->data<<" ";
+                if(nd->left){
+                    q.push(nd->left);
+                }
+                if(nd->right){
+                    q.push(nd->right);
+                }
+                q.pop();
+            }
+            cout<<"\n";
+        }
+            
+    }
+    
+    bool isFull(){
+        queue<Node *> q;
+        return isFull_BST(root,q);
+    }
+    
+    bool isFull_BST(Node *root,queue<Node *> q){
+        q.push(root);
+        while(!(q.empty())){
+            int qsize=q.size();
+            for(int i=0;i<qsize;i++){
+                Node *nd=q.front();
+                if((nd->left !=NULL && nd->right==NULL) ||(nd->left==NULL && nd->right!=NULL)){
+                    return false;
+                }
+                if(nd->left){
+                    q.push(nd->left);
+                }
+                if(nd->right){
+                    q.push(nd->right);
+                }
+                q.pop();
+            }
+            
+        }
+        return true;
+    }
+};
+
+
+int main()
+{
+    int t,n,a,i;
+    cin>>t;
+    while(t--){
+        Tree BST;
+        cin>>n;
+        for(i=0;i<n;i++){
+            cin>>a;
+            BST.insert(a);
+        }
+        if(BST.isFull()){
+            cout<<"True"<<endl;
+        }
+        else
+            cout<<"False"<<endl;
+    }
+    return 0;
+}
+
+
+
+
+//Level
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    
+    void post(){
+        post_order(root);
+    }
+    
+    void pre(){
+        pre_order(root);
+    }
+    
+    void in(){
+        in_order(root);
+    }
+    
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " ";
+        in_order(root->right);
+        return;
+    }
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+    
+    void LO(){
+        queue<Node *> q;
+        Level_order(root,q);
+    }
+    
+    void Level_order(Node *root,queue<Node *> q){
+        q.push(root);
+        while(!(q.empty())){
+            int qsize=q.size();
+            for(int i=0;i<qsize;i++){
+                Node *nd=q.front();
+                cout<<nd->data<<" ";
+                if(nd->left){
+                    q.push(nd->left);
+                }
+                if(nd->right){
+                    q.push(nd->right);
+                }
+                q.pop();
+            }
+            cout<<"\n";
+        }
+            
+    }
+};
+
+int main()
+{
+    int t,n,a,i;
+    cin>>t;
+    while(t--){
+        Tree BST;
+        cin>>n;
+        for(i=0;i<n;i++){
+            cin>>a;
+            BST.insert(a);
+        }
+        BST.LO();
+        cout<<"\n";
+    }
+    return 0;
+}
+D - Depth of Tree Nodes
+#include<bits/stdc++.h>
+
+using namespace std;
+
+class Node {
+    public:
+    int data;
+    Node *left, *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+
+class Tree {
+    public:
+    Node *root = NULL;
+    unordered_map<int, int> depthMap;
+
+    Node* create_and_insert(Node* root, int val, int depth) {
+        if (root == NULL) {
+            depthMap[val] = depth;
+            return new Node(val);
+        } else if (val < root->data) {
+            root->left = create_and_insert(root->left, val, depth + 1);
+        } else {
+            root->right = create_and_insert(root->right, val, depth + 1);
+        }
+        return root;
+    }
+
+    void insert(int val) {
+        root = create_and_insert(root, val, 0);
+    }
+};
+
+int main() {
+    int t, n, v;
+    cin >> t;
+    while (t--) {
+        Tree bst;
+        cin >> n;
+        vector<int> values(n);
+        for (int i = 0; i < n; i++) {
+            cin >> values[i];
+            bst.insert(values[i]);
+        }
+
+        for (int i = 0; i < n; i++) {
+            cout << bst.depthMap[values[i]] <<" " ;
+        }
+        cout << endl;
+    }//bst operations
+#include <iostream>
+using namespace std;
+
+class Node{
+    public:
+       int data;
+       Node* left;
+       Node* right;
+       Node(int data){
+           this->data=data;
+           this->left=NULL;
+           this->right=NULL;
+       }
+};
+
+class Tree{
+    public:
+       Node* root=NULL;
+       
+       Node* insert_node_at_bst(Node* root,int data){
+           if(root == NULL){
+               Node* newNode=new Node(data);
+               return newNode;
+           }
+           else if(data < root->data){
+                root->left=insert_node_at_bst(root->left,data);
+           }
+           else
+                root->right=insert_node_at_bst(root->right,data);
+            return root;
+       }
+       
+      void insertNode(int data){
+           root=insert_node_at_bst(root,data);
+       }
+       void in(){
+           inOrder(root);
+       }
+       
+       void pre(){
+           preOrder(root);
+           cout<<endl;
+       }
+       
+       void post(){
+           postOrder(root);
+       }
+       
+       void deleteNode(int data){
+           root=deleteBST(root,data);
+       }
+       
+       Node* deleteBST(Node* root,int key){
+           if(!root)  return root;
+           
+           if(key < root->data){
+               root->left=deleteBST(root->left,key);
+               return root;
+           }
+           else if(key > root->data){
+               root->right=deleteBST(root->right,key);
+               return root;
+           }
+           
+           if(root->left ==NULL){
+               Node* temp=root->right;
+               delete root;
+               return temp;
+           }
+           else if(root->right == NULL){
+               Node* temp=root->left;
+               delete root;
+               return temp;
+           }
+           
+           Node* curr=root->right;
+           while(curr->left != NULL)  
+              curr=curr->left;
+        
+           root->data=curr->data;
+           root->right=deleteBST(root->right,curr->data);
+           
+           return root;
+       }
+       
+       void searchNode(int key) {
+           if(searchBST(root,key)){
+               cout<<"Yes"<<endl;
+           }
+           else
+               cout<<"No"<<endl;
+       }
+       
+       bool searchBST(Node* root,int key){
+           if(root == NULL)
+           return false;
+           if(root->data == key)
+              return true;
+            else if(key > root->data)
+               return searchBST(root->right,key);
+            else
+               return searchBST(root->left,key);
+            return false;
+       }
+       
+       void postOrder(Node* root){
+           if(root == NULL)
+              return;
+            postOrder(root->left);
+            postOrder(root->right);
+            cout<<root->data<<" ";
+       }
+       
+       void preOrder(Node* root){
+           if(root == NULL)
+              return;
+            cout<<root->data<<" ";
+            preOrder(root->left);
+            preOrder(root->right);
+       }
+       
+       void inOrder(Node* root){
+           if(root == NULL)
+              return;
+            inOrder(root->left);
+            cout<<root->data<<" ";
+            inOrder(root->right);
+       }
+       
+};
+
+int main()
+{
+    int t,n,a,q,key;
+    cin>>t;
+    int i=1;
+    while(t--){
+        cout<<"Case #"<<i++<<":"<<endl;
+        Tree t;
+        cin>>q;
+        while(q--){
+            cin>>n;
+            if(n!=4)
+              cin>>key;
+            if(n==1){
+                t.insertNode(key);
+            }
+            else if(n==2)
+               t.deleteNode(key);
+            else if(n==3){
+                t.searchNode(key);
+            }
+            else{
+                t.pre();
+            }
+        }
+    }
+
+    return 0;
+}
+
+   
+//bst operations
+#include <iostream>
+using namespace std;
+
+class Node{
+    public:
+       int data;
+       Node* left;
+       Node* right;
+       Node(int data){
+           this->data=data;
+           this->left=NULL;
+           this->right=NULL;
+       }
+};
+
+class Tree{
+    public:
+       Node* root=NULL;
+       
+       Node* insert_node_at_bst(Node* root,int data){
+           if(root == NULL){
+               Node* newNode=new Node(data);
+               return newNode;
+           }
+           else if(data < root->data){
+                root->left=insert_node_at_bst(root->left,data);
+           }
+           else
+                root->right=insert_node_at_bst(root->right,data);
+            return root;
+       }
+       
+      void insertNode(int data){
+           root=insert_node_at_bst(root,data);
+       }
+       void in(){
+           inOrder(root);
+       }
+       
+       void pre(){
+           preOrder(root);
+           cout<<endl;
+       }
+       
+       void post(){
+           postOrder(root);
+       }
+       
+       void deleteNode(int data){
+           root=deleteBST(root,data);
+       }
+       
+       Node* deleteBST(Node* root,int key){
+           if(!root)  return root;
+           
+           if(key < root->data){
+               root->left=deleteBST(root->left,key);
+               return root;
+           }
+           else if(key > root->data){
+               root->right=deleteBST(root->right,key);
+               return root;
+           }
+           
+           if(root->left ==NULL){
+               Node* temp=root->right;
+               delete root;
+               return temp;
+           }
+           else if(root->right == NULL){
+               Node* temp=root->left;
+               delete root;
+               return temp;
+           }
+           
+           Node* curr=root->right;
+           while(curr->left != NULL)  
+              curr=curr->left;
+        
+           root->data=curr->data;
+           root->right=deleteBST(root->right,curr->data);
+           
+           return root;
+       }
+       
+       void searchNode(int key) {
+           if(searchBST(root,key)){
+               cout<<"Yes"<<endl;
+           }
+           else
+               cout<<"No"<<endl;
+       }
+       
+       bool searchBST(Node* root,int key){
+           if(root == NULL)
+           return false;
+           if(root->data == key)
+              return true;
+            else if(key > root->data)
+               return searchBST(root->right,key);
+            else
+               return searchBST(root->left,key);
+            return false;
+       }
+       
+       void postOrder(Node* root){
+           if(root == NULL)
+              return;
+            postOrder(root->left);
+            postOrder(root->right);
+            cout<<root->data<<" ";
+       }
+       
+       void preOrder(Node* root){
+           if(root == NULL)
+              return;
+            cout<<root->data<<" ";
+            preOrder(root->left);
+            preOrder(root->right);
+       }
+       
+       void inOrder(Node* root){
+           if(root == NULL)
+              return;
+            inOrder(root->left);
+            cout<<root->data<<" ";
+            inOrder(root->right);
+       }
+       
+};
+
+int main()
+{
+    int t,n,a,q,key;
+    cin>>t;
+    int i=1;
+    while(t--){
+        cout<<"Case #"<<i++<<":"<<endl;
+        Tree t;
+        cin>>q;
+        while(q--){
+            cin>>n;
+            if(n!=4)
+              cin>>key;
+            if(n==1){
+                t.insertNode(key);
+            }
+            else if(n==2)
+               t.deleteNode(key);
+            else if(n==3){
+                t.searchNode(key);
+            }
+            else{
+                t.pre();
+            }
+        }
+    }
+
+    return 0;
+}
+//HEIGHT
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    void post(){
+        post_order(root);
+    }
+    void pre(){
+        pre_order(root);
+    }
+    void in(){
+        in_order(root);
+    }
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " ";
+        in_order(root->right);
+        return;
+    }
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+    void height(){
+        cout<<findHeight(root);
+    }
+    int findHeight(Node *root){
+        if(root==NULL){
+            return -1;
+        }
+        int lsh=findHeight(root->left);
+        int rsh=findHeight(root->right);
+        if(lsh>rsh){
+            return lsh+1;
+        }
+        else{
+            return rsh+1;
+        }
+    }
+};
+
+int main()
+{
+    int t,n,a,i;
+    cin>>t;
+    while(t--){
+        Tree BST;
+        cin>>n;
+        for(i=0;i<n;i++){
+            cin>>a;
+            BST.insert(a);
+        }
+        BST.height();
+        cout<<"\n";
+    }
+    return 0;
+}
+
+
+
+
+//height of tree
+#include <iostream>
+
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root = NULL;
+    
+    void insert(int val){
+        root = create_node_and_insert(root, val);
+    }
+    
+    void post(){
+        post_order(root);
+        std::cout << std::endl;
+    }
+    
+    void pre(){
+        pre_order(root);
+    }
+    
+    void in(){
+        in_order(root);
+    }
+    
+    void height(){
+        std::cout << findHeight(root) << std::endl;
+    }
+    
+    Node *create_node_and_insert(Node *root, int val){
+        if(root == NULL){
+            return new Node(val);
+        }else if(val < root->data){
+            root->left = create_node_and_insert(root->left, val);
+        }else{
+            root->right = create_node_and_insert(root->right, val);
+        }
+        return root;
+    }
+    
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        std::cout << root->data << " -> ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        std::cout << root->data << " -> ";
+        in_order(root->right);
+        return;
+    }
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        std::cout << root->data << " -> ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+    
+    int findHeight(Node *root){
+        if(root == NULL){
+            return -1;
+        }
+        
+        int Lsh = findHeight(root->left);
+        int Rsh = findHeight(root->right);
+        
+        if(Lsh > Rsh){
+            return Lsh+1;
+        }else{
+            return Rsh+1;
+        }
+    }
+    
+};
+
+int main()
+{
+    /*
+    Node *root = new Node(11);
+    
+    root->left = new Node(20);
+    root->right = new Node(8);
+    
+    root->left->left = new Node(2);
+    root->left->right = new Node(7);
+    
+    root->right->left = new Node(6);
+    root->right->right = new Node(15);
+    
+    Tree myObj;
+    std::cout << "pre_order: " << std::endl;
+    myObj.pre_order(root);
+    
+    std::cout << "in_order: " << std::endl;
+    myObj.in_order(root);
+    
+    std::cout << "post_order: " << std::endl;
+    myObj.post_order(root);   
+    
+    */
+    
+    Tree BST;
+    /*
+    BST.insert(4);
+    BST.insert(5);
+    BST.insert(15);
+    BST.insert(0);
+    BST.insert(1);
+    BST.insert(7);
+    BST.insert(17); */
+    
+    // BST.insert(1);
+    // BST.insert(2);
+    // BST.insert(3);
+    // BST.insert(4);
+    // BST.insert(5);
+    
+    BST.insert(3);
+    BST.insert(2);
+    BST.insert(4);
+    BST.insert(1);
+    BST.insert(5);
+    
+    BST.post();
+    BST.height();
+    return 0;
+}
+
+/*
+pre-order:
+    print - data
+    visit-left;
+    visit-right;
+
+post-order:
+    visit-left;
+    visit-right;
+    print - data
+
+in-order:
+    visit-left;
+    print - data
+    visit-right;
+*/
+//Traversal 2
+#include<bits/stdc++.h>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node *left;
+    Node *right;
+    
+    Node(int val){
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
+    }
+};
+
+class Tree{
+    public:
+    Node *root=NULL;
+    Node *create_node_and_insert(Node *root,int val){
+        if(root==NULL){
+            return new Node(val);
+        }
+        else if(val<root->data){
+            root->left=create_node_and_insert(root->left,val);
+        }
+        else{
+            root->right=create_node_and_insert(root->right,val);
+        }
+        return root;
+    }
+    void insert(int val){
+        root=create_node_and_insert(root,val);
+    }
+    void post(){
+        post_order(root);
+    }
+    void pre(){
+        pre_order(root);
+    }
+    void in(){
+        in_order(root);
+    }
+    void post_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        
+        post_order(root->left);
+        post_order(root->right);
+        cout << root->data << " ";
+        return;
+    }
+    
+    void in_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        in_order(root->left);
+        cout << root->data << " ";
+        in_order(root->right);
+        return;
+    }
+    
+    
+    void pre_order(Node *root){
+        if(root == NULL){
+            return;
+        }
+        cout << root->data << " ";
+        pre_order(root->left);
+        pre_order(root->right);
+        return;
+    }
+};
+
+int main()
+{
+    int t,n,a,i;
+    cin>>t;
+    while(t--){
+        Tree BST;
+        cin>>n;
+        for(i=0;i<n;i++){
+            cin>>a;
+            BST.insert(a);
+        }
+        BST.pre();
+        cout<<"\n";
+        BST.in();
+        cout<<"\n";
+        BST.post();
+        cout<<"\n";
+        cout<<"\n";
+    }
+    return 0;
+}
+
+
+
+
+
+//Island
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void dfs(vector<vector<int>>& grid, int r, int c, int R, int C, vector<vector<bool>>& visited) {
+    static int rowNum[] = {-1, -1, -1, 0, 0, 1, 1, 1};
+    static int colNum[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+    visited[r][c] = true;
+
+    for (int k = 0; k < 8; ++k) {
+        int newRow = r + rowNum[k];
+        int newCol = c + colNum[k];
+
+        if (newRow >= 0 && newRow < R && newCol >= 0 && newCol < C && 
+            grid[newRow][newCol] == 1 && !visited[newRow][newCol]) {
+            dfs(grid, newRow, newCol, R, C, visited);
+        }
+    }
+}
+
+int countIslands(vector<vector<int>>& grid, int R, int C) {
+    vector<vector<bool>> visited(R, vector<bool>(C, false));
+    int islandCount = 0;
+
+    for (int i = 0; i < R; ++i) {
+        for (int j = 0; j < C; ++j) {
+            if (grid[i][j] == 1 && !visited[i][j]) {
+                dfs(grid, i, j, R, C, visited);
+                ++islandCount;
+            }
+        }
+    }
+
+    return islandCount;
+}
+
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int R, C;
+        cin >> R >> C;
+        vector<vector<int>> grid(R, vector<int>(C));
+        
+        for (int i = 0; i < R; ++i) {
+            for (int j = 0; j < C; ++j) {
+                char cell;
+                cin >> cell;
+                grid[i][j] = cell - '0';
+            }
+        }
+
+        int result = countIslands(grid, R, C);
+        cout << result << endl;
+    }
+
+    return 0;
+}
+
+//DFS
+#include <bits/stdc++.h>
+using namespace std;
+void implementDFS(int node,vector<vector<int>>& adj,vector<int>& visited,vector<int>& ans){
+    visited[node]=1;
+    ans.push_back(node);
+    cout<<node<<" ";
+    for(auto N:adj[node]){
+        if(!visited[N])
+            implementDFS(N,adj,visited,ans);
+    }
+}
+void dfs(int node,vector<vector<int>>& adj,int n){
+    vector<int> ans;
+    vector<int> visited(n+1);
+    implementDFS(node,adj,visited,ans);
+}
+int main()
+{
+    int n,e,v1,v2;
+    cin>>n>>e;
+    vector<vector<int>>v (n+1,vector<int>());
+    for(int i=0;i<e;i++){
+        cin>>v1>>v2;
+        v[v1].push_back(v2);
+        v[v2].push_back(v1);
+    }
+    for(int i=0;i<n;i++){
+        cout<<i<<"->";
+        for(int j=0;j<v[i].size();j++){
+            cout<<v[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    int start;
+    cin>>start;
+    dfs(start,v,n);
+    return 0;
+}
+//Dijkstras
+#include <bits/stdc++.h>
+using namespace std;
+vector<int>dijkstra(vector<vector<pair<int,int>>>& adj,int n,int start){
+    vector<int> dist(n,INT_MAX);
+    dist[start]=0;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+    pq.push({0,start});
+    while(!pq.empty()){
+        auto x=pq.top();
+        int d=x.first;
+        int cur=x.second;
+        pq.pop();
+        if(d>dist[cur]) continue;
+        for(auto k:adj[cur]){
+            int neighbor=k.first;
+            int weight=k.second;
+            if(dist[cur]+weight<dist[neighbor]){
+                dist[neighbor]=dist[cur]+weight;
+                pq.push({dist[neighbor],neighbor});
+            }
+        }
+    }
+    return dist;
+}
+int main()
+{
+   int n,e,v1,v2,w;
+   cin>>n>>e;
+   vector<vector<pair<int,int>>> v(n+1);
+   for(int i=0;i<e;i++){
+       cin>>v1>>v2>>w;
+       v[v1].push_back({v2,w});
+       v[v2].push_back({v1,w});
+   }
+   for(int i=0;i<n;i++){
+       cout<<i<<"->";
+       for(int j=0;j<v[i].size();j++){
+           cout<<v[i][j].first<<" ";
+       }
+       cout<<"\n";
+   }
+   int start;
+   cin>>start;
+   vector<int> dist=dijkstra(v,n,start);
+   for(int i=0;i<dist.size();i++){
+       cout<<dist[i]<<" ";
+   }
+    return 0;
+}
+//Bear and Forgotten Tree 2
+#include <bits/stdc++.h>
+
+using namespace std;
+const int maxn = 3e5+5;
+int n,m,k;
+set<int> vis, E[maxn];
+int q[maxn],st;
+void solve(int x)
+{
+    vis.erase(x);
+    q[st++]=x;
+    for(int i=0;i<st;i++)
+    {
+        int now = q[i];
+        int pre = 1;
+        while(1)
+        {
+            auto next = vis.upper_bound(pre);
+            if(next==vis.end())break;
+            int v= *next;
+            pre = v;
+            if(E[now].count(v)) continue;
+            q[st++] =v ;
+            vis.erase(v);
+        }
+    }
+}
+
+int main() {
+    scanf("%d%d%d",&n,&m,&k);
+    for(int i=1;i<=m;i++)
+    {
+        int x,y;scanf("%d%d",&x,&y);
+        E[x].insert(y);
+        E[y].insert(x);
+    }
+    if(k>n-1-E[1].size())return puts ("impossible"),0;
+    
+    for(int i=2;i<=n;i++) vis.insert(i);
+    int cnt =0 ;
+    for(int i=2;i<=n;i++)
+    {
+        if(vis.count(i))
+        {
+            cnt++;st=0;
+            solve(i);
+            int flag=0;
+            for(int j=0;j<st;j++) if(!E[1].count(q[j])) flag=1;
+            if(flag==0) return puts("impossible"),0;
+        }
+    }
+    if(cnt>k) return puts("impossible"),0;
+    return puts("possible"),0;
+}
+
+
+//kp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N, W;
+    cin >> N >> W;
+    
+    vector<int> v(N+1); 
+    vector<int> w(N+1); 
+    
+    for (int i = 1; i <= N; ++i) {
+        cin >> v[i] >> w[i];
+    }
+    
+    
+    vector<double> dp(W + 1, 0.0);
+
+    for (int i = 1; i <= N; ++i) {
+        for (int j = W; j >= w[i]; --j) {
+            dp[j] = max(dp[j], dp[j - w[i]] + v[i]);
+        }
+    }
+    cout << dp[W] << endl;
+    
+    return 0;
+}
+//I am busy
+#include <bits/stdc++.h>
+using namespace std;
+
+bool sorted(pair<int,int>& a , pair<int,int>& b){
+    return a.second < b.second;
+}
+
+int main()
+{
+    int t,n,s,end;
+    cin>>t;
+    while(t--){
+        int count=1;
+        cin>>n;
+        vector<pair<int,int>> v;
+        for(int i=0;i<n;i++){
+            cin>>s>>end;
+            v.push_back({s,end});
+        }
+        
+        sort(v.begin(),v.end(),sorted);
+        // for(int i=0;i<n;i++){
+        //     cout<<v[i].first<<" "<<v[i].second<<endl;
+        // }
+        int end_time=v[0].second;
+        for(int i=1;i<n;i++){
+            if(v[i].first >= end_time){
+                count++;
+                end_time=v[i].second;
+            }
+        }
+        cout<<count<<endl;
+    }
+    return 0;
+}
+
+//high score
+#include <iostream>
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    while (T--) {
+        int N, NA, NB, NC, ND;
+        cin >> N >> NA >> NB >> NC >> ND;
+        int max_marks = max(max(NA, NB), max(NC, ND));
+        cout << max_marks << endl;
+    }
+    return 0;
+}
+
+Sol: Maze
+
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
+int M, N, cnt, sx, sy, ex, ey;
+
+char grid[21][21];
+int vis[21][21];
+
+int dx[]={1,0,-1,0};
+int dy[]={0,-1,0,1};
+
+int check(){
+	for (int i=0;i<M;i++)
+		for (int j =0;j<N;j++)
+			if ((i==0||i==M-1||j==0||j==N-1)&&grid[i][j]=='.'){
+	            if (cnt==0){
+	                sx = i;
+	                sy = j;
+	            }
+	            else if (cnt==1){
+	                ex = i;
+	                ey = j;
+	            }
+	            else return 0;
+	            cnt++;
+	        }
+    if (cnt==2)
+        return 1;
+    else return 0;
+}
+
+int dfs(int x, int y){
+    if (x==ex&&y==ey)
+        return 1;
+    if (vis[x][y])
+        return 0;
+    vis[x][y] = 1;
+    for (int i=0;i<4;i++){
+        int nx = x+dx[i], ny = y+dy[i];
+        if (nx>=0&&ny>=0&&nx<M&&ny<N&&grid[nx][ny]!='#')
+            if (dfs(nx,ny))
+                return 1;
+
+    }
+    return 0;
+}
+
+int main(){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        scanf("%d %d", &M, &N);
+        for (int i=0;i<M;i++)
+            scanf("%s", grid[i]);
+        if (M==1&&N==1){
+        	printf("invalid\n");
+        	continue;
+        }
+        memset(vis,0,sizeof vis);
+        cnt = 0;
+        if (check()&&dfs(sx, sy))
+            printf("valid\n");
+        else printf("invalid\n");
+    }
+}
+//G- Change
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+   int n;
+   cin>>n;
+   vector<int> v={25,10,5,1};
+   int coins=0;
+   int i=0;
+   while(n != 0){
+       while(v[i] > n)
+         i++;
+        coins+=n/v[i];
+        n=n%v[i];
+   }
+   cout<<coins<<endl;
+    return 0;
+}
+//C-Minimizing the Max-Min Difference
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++)
+      cin>>v[i];
+    sort(v.begin(),v.end());
+    int min_dif=INT_MAX;
+    int maxi,mini,dif;
+    for(int i=n-1;i>=0;i--){
+        if(i==n-1)
+          maxi=v[i-1];
+        else{
+            maxi=v[n-1];
+        }
+        
+        if(i==0){
+            mini=v[i+1];
+        }
+        else
+           mini=v[0];
+       
+        dif=maxi-mini;
+        if(dif > 0)
+         min_dif=min(min_dif,maxi-mini);
+    }
+    cout<<min_dif<<endl;
+    return 0;
+}
+//Candies
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the 'candies' function below.
+ *
+ * The function is expected to return a LONG_INTEGER.
+ * The function accepts following parameters:
+ *  1. INTEGER n
+ *  2. INTEGER_ARRAY arr
+ */
+
+long candies(int n, vector<int>& scores) {
+   int prev_score=0;
+    int prev_choc=0;
+    vector<int> ans(n);
+    
+    for(int i=0;i<n;i++){
+        if(scores[i] > prev_score){
+            prev_choc++;
+        }
+        else{
+            prev_choc=1;
+        }
+        ans[i]=prev_choc;
+        prev_score=scores[i];
+    }
+    long int total=ans[n-1];
+    for(int i=n-2;i>=0;i--){
+        if(scores[i] > scores[i+1]){
+            ans[i]=max(ans[i],ans[i+1]+1);
+        }
+        total+=ans[i];
+    }
+    return total;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        string arr_item_temp;
+        getline(cin, arr_item_temp);
+
+        int arr_item = stoi(ltrim(rtrim(arr_item_temp)));
+
+        arr[i] = arr_item;
+    }
+
+    long result = candies(n, arr);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+//b the maze
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
+int M, N, cnt, sx, sy, ex, ey;
+
+char grid[21][21];
+int vis[21][21];
+
+int dx[]={1,0,-1,0};
+int dy[]={0,-1,0,1};
+
+int check(){
+	for (int i=0;i<M;i++)
+		for (int j =0;j<N;j++)
+			if ((i==0||i==M-1||j==0||j==N-1)&&grid[i][j]=='.'){
+	            if (cnt==0){
+	                sx = i;
+	                sy = j;
+	            }
+	            else if (cnt==1){
+	                ex = i;
+	                ey = j;
+	            }
+	            else return 0;
+	            cnt++;
+	        }
+    if (cnt==2)
+        return 1;
+    else return 0;
+}
+
+int dfs(int x, int y){
+    if (x==ex&&y==ey)
+        return 1;
+    if (vis[x][y])
+        return 0;
+    vis[x][y] = 1;
+    for (int i=0;i<4;i++){
+        int nx = x+dx[i], ny = y+dy[i];
+        if (nx>=0&&ny>=0&&nx<M&&ny<N&&grid[nx][ny]!='#')
+            if (dfs(nx,ny))
+                return 1;
+
+    }
+    return 0;
+}
+
+int main(){
+    int t;
+    scanf("%d", &t);
+    while(t--){
+        scanf("%d %d", &M, &N);
+        for (int i=0;i<M;i++)
+            scanf("%s", grid[i]);
+        if (M==1&&N==1){
+        	printf("invalid\n");
+        	continue;
+        }
+        memset(vis,0,sizeof vis);
+        cnt = 0;
+        if (check()&&dfs(sx, sy))
+            printf("valid\n");
+        else printf("invalid\n");
+    }
+}
+ - X 1s and Y 0s
+#include<iostream>
+using namespace std;
+const int MOD=1000000007;
+long long power (long long x, long long y){
+    long long res = 1;
+    x=x % MOD;
+    while (y > 0){
+        if (y & 1){
+            res=(res * x ) % MOD;
+        
+        }
+        y = y >> 1;
+        x=(x * x) % MOD;
+    }
+    return res;
+}
+long long find_number(int X, int Y)
+{
+    long long num = (power (2, X)-1+MOD) % MOD;
+    num = (num *power (2, Y)) % MOD;
+    return num;
+}
+int main(){
+    int T,X, Y;
+     cin >> T;
+    for (int i=0; i < T; ++i){
+        cin >> X >> Y;
+        long long result = find_number (X, Y);
+        cout << result << endl;
+    }
+    return 0;
+} 
+//Finding sum
+#include <bits/stdc++.h>
+using namespace std;
+vector<vector<int>> ans;
+vector<int> temp;
+int solve(vector<int>& v,int target,int index){
+    if(target<0)
+        return false;
+    if(index>=v.size())
+        return false;
+    if(target==0 && index < v.size()){
+        ans.push_back(temp);
+        return true;
+    }
+        
+    temp.push_back(v[index]);
+    int include=solve(v,target-v[index],index+1);
+    temp.pop_back();
+    int exclude=solve(v,target,index+1);
+    return (include || exclude);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    int target;
+    cin>>target;
+    if(solve(v,target,0)){
+        cout<<"target sum found"<<endl;
+    }
+    else
+        cout<<"not found";
+    for(int i=0;i<ans.size();i++){
+        for(int j=0;j<ans[0].size();j++){
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+//Sol: Sudoku
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define nl '\n'
+int box [9] [9];
+bool ok(int &row, int &col, int num) {
+if (box [row][col]!=0)
+return false;
+for(int i=0;i<9;i++) {
+  if (box [row] [i]==num || box [i] [col]==num)
+ {
+      return false;
+  }
+  }
+  int r=(row/3)*3,c=(col/3)*3;
+  for(int i=0;i<3;i++){
+    for(int j=0;j<3;j++){
+      if (box [r+i] [c+j]==num) {
+      return false;
+  }
+  }
+}
+return true;
+}
+bool pos (int &row, int &col) {
+  int mn=1e4;
+  for(int i=0;i<9;i++){
+    for(int j=0;j<9;j++){
+      if (box[i][j]==0){
+        int cnt=0;
+        for(int k=1;k<=9;k++) {
+          cnt+=(ok(i,j,k));
+        }
+        if (mn>cnt) {
+        mn=cnt;
+        row=i;
+        col=j;
+}
+}
+}
+}
+return mn<=9;
+}
+bool dfs() {
+int row=0,col=0;
+if (!pos(row,col)) {
+return true;
+}
+for(int i=1;i<=9;i++) {
+if(ok(row,col,i)) {
+box [row][col]=i;
+if (dfs()) {
+return true;
+}
+box [row][col]=0;
+}
+}
+return false;
+}
+void print() {
+for(int i=0;i<9;i++){
+for(int j=0;j<9;j++){
+cout<<box[i][j];
+}
+cout<<nl;
+}
+}
+int main() {
+int test_case;
+ios::sync_with_stdio(false); cin.tie (NULL); cout.tie (NULL);
+cin>>test_case;
+for(int t=1;t<=test_case;t++) {
+char ch;
+for(int i=0;i<9;i++){
+for(int j=0;j<9;j++){
+cin>>ch;
+box[i][j]=((ch=='.')?0:ch-'0');
+}
+}
+dfs();
+cout<<"Case "<<t<<":"<<nl;
+print();
+}
+
+return 0;
+
+}
+
+
+
+
